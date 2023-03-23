@@ -17,22 +17,18 @@ document.addEventListener("DOMContentLoaded", () => {
   function addNewTask(task) {
     const taskList = document.querySelector('#tasks')
     const newListItem = document.createElement('li')
-    const newButton = document.createElement('input')
+    const newButton = document.createElement('button')
 
     newListItem.textContent = task
-    newButton.type = "button"
-    newButton.value = "x"
-    newButton.className = "deleteButton"
+    newButton.textContent = "x"
     taskList.append(newListItem)
-    taskList.appendChild(newButton)
+    taskList.append(newButton)
+    newButton.addEventListener('click', deleteButton)
   }
 
-    const deleteButton = document.querySelector(".deleteButton")
-    console.log(deleteButton)
-  //   deleteButton.addEventListener('click', deleteTask)
-    
-  //   function deleteTask(event) {
-  //     event.target.remove()
-  // }
-
+    function deleteButton(event) {
+      event.target.previousSibling.remove()
+      event.target.remove();
+    }
+  
 });
